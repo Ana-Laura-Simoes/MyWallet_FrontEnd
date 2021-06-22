@@ -2,8 +2,10 @@ import styled from 'styled-components';
 import {useState} from 'react';
 import Loader from "react-loader-spinner";
 import axios from 'axios';
+import {useHistory} from "react-router-dom";
 
 export default function NewEntrance(){
+const history = useHistory();
 
 const[Value,setValue]=useState("");
 const[description,setDescription]=useState("");
@@ -49,11 +51,19 @@ disabled={loading}
 
 />  
 
-<button type="submit" required isDisabled={loading} >
+<button class="Save" type="submit" required isDisabled={loading} >
  {!loading ? "Salvar entrada" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
 </button> 
 
 </form>
+
+<Cancel 
+isDisabled={loading} 
+disabled={loading} 
+onClick={()=> (history.push("/"))}>
+Cancelar
+</Cancel>
+
 </Container>
     );
 }
@@ -88,7 +98,8 @@ padding:15px;
   }
 }
 
-button{
+.Save{
+margin-top:20px ;
 width: 326px;
 height: 58px;
 background: #A328D6;
@@ -102,7 +113,25 @@ font-weight: bold;
 font-size: 20px;
 line-height: 23px;
 color: #FFFFFF;
-opacity: ${props => props.isDisabled ? 0.5 : 1};
+opacity: ${props => props.isDisabled ? 0.8 : 1};
 }
 
+`;
+
+const Cancel = styled.button `
+width: 326px;
+height: 58px;
+margin-top:15px;
+background: #FFFFFF;
+border-radius: 5px;
+border:none;
+padding:13px;
+display:flex;
+align-items: center;
+justify-content: center;
+font-weight: bold;
+font-size: 20px;
+line-height: 23px;
+color: #A328D6 ;
+opacity: ${props => props.isDisabled ? 0.8 : 1};
 `;
