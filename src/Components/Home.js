@@ -1,4 +1,4 @@
-import { RiRegisteredFill } from "react-icons/ri";
+
 import styled from "styled-components";
 import { useEffect, useState, useContext } from "react";
 import Header from "./Header";
@@ -6,6 +6,8 @@ import Footer from "./Footer";
 export default function Home(){
 
 const [register,setRegister]=useState([]);
+
+
     return(
 <>
 <Container>
@@ -23,7 +25,6 @@ const [register,setRegister]=useState([]);
 
 const Container=styled.div `
 padding:25px;
-background:#8C11BE;
 width:100vw;
 height:100vh;
 `;

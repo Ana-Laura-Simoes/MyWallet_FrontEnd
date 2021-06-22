@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {useState} from 'react';
 import Loader from "react-loader-spinner";
-
+import axios from 'axios';
 export default function NewExit(){
 
 const[Value,setValue]=useState("");
@@ -10,7 +10,15 @@ const[loading,setLoading] = useState(false);
 
 function HandleData(e){
     e.preventDefault();
-
+    setLoading(true);
+    const body = { 
+        value: Value, 
+        description:description };
+    const request = axios.post(
+          "http://localhost:4000/entrance",
+          body
+        );
+        request.then((data)=>console.log(data),setLoading(false));
 }
 
 return(
