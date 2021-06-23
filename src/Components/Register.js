@@ -8,7 +8,7 @@ export default function Register ({date,description,value,type}){
 <Date>{date}</Date>
 <Description>{description}</Description>
 </div>
-<Value><span class={type}>{value.toFixed(2)}</span></Value>
+<Value><span className={type}>{value.toFixed(2)}</span></Value>
 
 </Container>
     );

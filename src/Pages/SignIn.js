@@ -1,24 +1,25 @@
 import styled from "styled-components";
 import Loader from "react-loader-spinner";
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { useHistory } from "react-router";
 import axios from "axios";
+import UserContext from "../contexts/UserContext";
 
-export default function SignUp(){
+export default function SignIn(){
+const {setUser} = useContext(UserContext);
+
 const history=useHistory();    
 const [loading,setLoading]=useState(false);
-
-const [name,setName]=useState("");
 const [email,setEmail]=useState("");
 const [password,setPassword]=useState("");
-const [confirmPassword,setConfirmPassword]=useState("");
+
 
 
 function HandleData(e){
     e.preventDefault();
-    const body = { name, email, password };
+    const body = { email, password };
     const request = axios.post(
-      "http://localhost:4000/signUp",
+      "http://localhost:4000/signIn",
       body
     );
 
@@ -26,14 +27,15 @@ function HandleData(e){
 
     request.then((response) => {
       console.log(response.data)
-      history.push("/");
+      setUser(response.data);
+      history.push("/menu");
     });
 
     request.catch(() => {
-      alert("Falha ao realizar o cadastro!");
+      alert("Falha no login, email ou senha incorretos!");
       setLoading(false);
     });
-}        
+}    
     
 return(
    
@@ -42,14 +44,6 @@ return(
 
 <Container>
 <form onSubmit={HandleData}>
-<input
-type="text"
-required
-placeholder="Nome"
-value={name} 
-onChange={e => setName(e.target.value)} 
-disabled={loading}
-/>  
 
 <input
 type="email"
@@ -69,22 +63,14 @@ onChange={e => setPassword(e.target.value)}
 disabled={loading}
 />  
 
-<input
-type="password"
-required
-placeholder="Confirme a senha"
-value={confirmPassword} 
-onChange={e => setConfirmPassword(e.target.value)} 
-disabled={loading}
-/>  
 
-<button class="Save" type="submit" required isdisabled={loading} >
- {!loading ? "Cadastrar" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
+<button className="Save" type="submit" required isdisabled={loading} >
+ {!loading ? "Entrar" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
 </button> 
 
 </form>
 
-<div onClick={()=>(history.push("/"))}>Já tem uma conta? Entre agora!</div>
+<div onClick={()=>(history.push("/SignUp"))}> Primeira vez? Cadastre-se!</div>
 
 </Container>
 </>
@@ -101,7 +87,7 @@ font-size: 32px;
 line-height: 50px;
 color: #FFFFFF;
 text-align: center;
-margin-top:95px;
+margin-top:159px;
 `;
 
 const Container = styled.div ` 

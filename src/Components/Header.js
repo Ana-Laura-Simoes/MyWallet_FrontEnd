@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-
-import { useContext, useState } from "react"
-import { Link, useHistory } from "react-router-dom";
+import UserContext from "../contexts/UserContext";
+import { useContext} from "react"
+import {useHistory } from "react-router-dom";
 import{RiLogoutBoxRLine} from 'react-icons/ri';
 
 export default function Header(){
+    const {user} = useContext(UserContext);
     const history = useHistory();
-
     function logout() {
         history.push("/");
     }
@@ -14,8 +14,8 @@ export default function Header(){
     return(
 <Container>
 
-<span>Olá, Fulano</span>
-<RiLogoutBoxRLine class="icon" onClick={()=>(logout())}/>
+<span>Olá, {user.name}</span>
+<RiLogoutBoxRLine className="icon" onClick={()=>(logout())}/>
 </Container>
     );
 }

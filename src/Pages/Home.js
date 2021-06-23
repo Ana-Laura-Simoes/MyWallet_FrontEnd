@@ -1,6 +1,6 @@
 
 import styled from "styled-components";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState} from "react";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import Register from "../Components/Register";
@@ -15,16 +15,23 @@ let exits=0;
 let entrances=0;
 
 useEffect(() => {
-    const promise = axios.get(
-        "http://localhost:4000/menu"
-      );
-      promise.then((r)=>setRegisters(r.data),
-      );
+        const request = axios.get(
+          "http://localhost:4000/menu"
+        );
+
+        request.then((response) => {
+          setRegisters(response.data);
+        });
+    
+        request.catch(() => {
+          alert("Falha no login, email ou senha incorretos!");
+        }); 
+      
   }, []);
 
  
-  registers.map((r)=>{if(r.type==="exit") exits=exits+Number(r.value)})
-  registers.map((r)=>{if(r.type==="entrance")entrances+=Number(r.value)})
+  registers.forEach((r)=>{if(r.type==="exit") exits=exits+Number(r.value)})
+  registers.forEach((r)=>{if(r.type==="entrance")entrances+=Number(r.value)})
 
   balance=(entrances-exits) ;
 
@@ -40,7 +47,8 @@ useEffect(() => {
     <>
 <div>  
 {
-registers.map((r)=><Register 
+registers.map((r)=><Register
+key={r.id} 
 date={r.date||"30/11"}
 description={r.description}
 value={r.value}
@@ -49,7 +57,7 @@ type={r.type}/>)
 </div>
 <Balance>
 <span>SALDO</span>
-<span class={balance>=0?"positive":"negative"}>{balance.toFixed(2)}</span>
+<span className={balance>=0?"positive":"negative"}>{balance.toFixed(2)}</span>
 </Balance> 
 
 </>

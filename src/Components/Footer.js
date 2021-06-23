@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {AiOutlinePlusCircle,AiOutlineMinusCircle} from "react-icons/ai";
-import { Link, useHistory } from "react-router-dom";
+import {useHistory } from "react-router-dom";
 
 export default function Footer(){
     const history = useHistory();

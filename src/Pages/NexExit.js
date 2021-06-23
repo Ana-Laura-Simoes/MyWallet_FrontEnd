@@ -20,7 +20,7 @@ function HandleData(e){
           "http://localhost:4000/exit",
           body
         );
-        request.then((data)=>console.log(data),
+        request.then((data)=>
         setLoading(false),
         history.push("/menu")
         );
@@ -52,13 +52,13 @@ disabled={loading}
 
 />  
 
-<button class="Save"type="submit" required isDisabled={loading} >
+<button className="Save"type="submit" required isdisabled={loading} >
  {!loading ? "Salvar saída" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
 </button> 
 
 </form>
 <Cancel 
-isDisabled={loading} 
+isdisabled={loading} 
 disabled={loading} 
 onClick={()=> (history.push("/menu"))}>
 Cancelar
@@ -112,7 +112,7 @@ font-weight: bold;
 font-size: 20px;
 line-height: 23px;
 color: #FFFFFF;
-opacity: ${props => props.isDisabled ? 0.8 : 1};
+opacity: ${props => props.isdisabled ? 0.8 : 1};
 }
 
 `;
@@ -132,5 +132,5 @@ font-weight: bold;
 font-size: 20px;
 line-height: 23px;
 color: #A328D6 ;
-opacity: ${props => props.isDisabled ? 0.8 : 1};
+opacity: ${props => props.isdisabled ? 0.8 : 1};
 `;
