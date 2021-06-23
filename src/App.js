@@ -1,5 +1,5 @@
 import { Switch, Route, BrowserRouter } from "react-router-dom";
-import Home from "./Components/Home";
+import Home from "./Pages/Home";
 import NewEntrance from"./Pages/NewEntrance";
 import NewExit from "./Pages/NexExit";
 
