@@ -21,9 +21,9 @@ function HandleData(e){
           "http://localhost:4000/entrance",
           body
         );
-        request.then((data)=>console.log(data),
+        request.then((data)=>
         setLoading(false),
-        history.push("/")
+        history.push("/menu")
         );
 }
 
@@ -62,7 +62,7 @@ disabled={loading}
 <Cancel 
 isDisabled={loading} 
 disabled={loading} 
-onClick={()=> (history.push("/"))}>
+onClick={()=> (history.push("/menu"))}>
 Cancelar
 </Cancel>
 

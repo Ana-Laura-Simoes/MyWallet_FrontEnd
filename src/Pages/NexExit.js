@@ -22,7 +22,7 @@ function HandleData(e){
         );
         request.then((data)=>console.log(data),
         setLoading(false),
-        history.push("/")
+        history.push("/menu")
         );
 }
 
@@ -60,7 +60,7 @@ disabled={loading}
 <Cancel 
 isDisabled={loading} 
 disabled={loading} 
-onClick={()=> (history.push("/"))}>
+onClick={()=> (history.push("/menu"))}>
 Cancelar
 </Cancel>
 </Container>
