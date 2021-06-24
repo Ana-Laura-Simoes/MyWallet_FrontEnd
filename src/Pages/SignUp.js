@@ -16,7 +16,13 @@ const [confirmPassword,setConfirmPassword]=useState("");
 
 function HandleData(e){
     e.preventDefault();
-    const body = { name, email, password };
+
+    if(password!==confirmPassword){
+      alert("As senhas digitadas são diferentes!");
+      return;
+    }
+    
+    const body = { name, email, password, confirmPassword };
     const request = axios.post(
       "http://localhost:4000/signUp",
       body
@@ -29,8 +35,10 @@ function HandleData(e){
       history.push("/");
     });
 
-    request.catch(() => {
-      alert("Falha ao realizar o cadastro!");
+    request.catch((error) => {
+      if(error.response.status===409) alert("Este e-mail já esta cadastrado!");
+      
+      else alert("Falha no login, email ou senha incorretos!");
       setLoading(false);
     });
 }        

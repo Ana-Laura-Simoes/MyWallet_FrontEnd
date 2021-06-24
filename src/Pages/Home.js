@@ -12,18 +12,16 @@ export default function Home(){
 const [registers,setRegisters]=useState([]);
 const {user} = useContext(UserContext);
 const [balance,setBalance]=useState(0);
-let exits=0;
-let entrances=0;
 
 useEffect(() => {
         const config = {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
-        };
+        }; 
     
         const request = axios.get(
-          "http://localhost:4000/menu",
+          "http://localhost:4000/home",
           config
         );
         request.then((response) => {
@@ -35,14 +33,7 @@ useEffect(() => {
           console.log(error);
         });
       
-  }, []);
-
- 
-  /*registers.forEach((r)=>{if(r.type==="exit") exits=exits+Number(r.value)})
-  registers.forEach((r)=>{if(r.type==="entrance")entrances+=Number(r.value)})
-
-  balance=(entrances-exits) ;
-  */
+  }, []);//eslint-disable-line
 
     return(
 <>

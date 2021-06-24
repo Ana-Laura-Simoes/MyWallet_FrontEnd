@@ -5,7 +5,7 @@ import { useHistory } from "react-router";
 import axios from "axios";
 import UserContext from "../contexts/UserContext";
 
-export default function SignIn(){
+export default function Login(){
 const {setUser} = useContext(UserContext);
 
 const history=useHistory();    
