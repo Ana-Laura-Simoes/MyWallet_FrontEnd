@@ -10,7 +10,7 @@ import UserContext from "./contexts/UserContext";
 export default function App(){
     const [user, setUser] = useState("");
     return (
-<UserContext.Provider value={{ user, setUser }}>
+<UserContext.Provider value={{ user: user || JSON.parse(localStorage.getItem("user")), setUser  }}>
 <BrowserRouter>
 <Switch>
 <Route path="/" exact component={Login}/>    

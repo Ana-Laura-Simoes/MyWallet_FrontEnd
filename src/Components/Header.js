@@ -7,7 +7,9 @@ import{RiLogoutBoxRLine} from 'react-icons/ri';
 export default function Header(){
     const {user} = useContext(UserContext);
     const history = useHistory();
+
     function logout() {
+        localStorage.clear();
         history.push("/");
     }
 
