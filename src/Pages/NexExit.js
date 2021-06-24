@@ -1,29 +1,46 @@
 import styled from 'styled-components';
-import {useState} from 'react';
+import {useState, useContext} from 'react';
 import Loader from "react-loader-spinner";
 import axios from 'axios';
 import {useHistory} from "react-router-dom";
+import UserContext from "../contexts/UserContext";
+
 
 export default function NewExit(){
 const history = useHistory();
+const {user} = useContext(UserContext);
 const[Value,setValue]=useState("");
 const[description,setDescription]=useState("");
 const[loading,setLoading] = useState(false);
 
 function HandleData(e){
+    
     e.preventDefault();
     setLoading(true);
+    const config = {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      };
     const body = { 
         value: Value, 
         description:description };
-    const request = axios.post(
-          "http://localhost:4000/exit",
-          body
-        );
-        request.then((data)=>
-        setLoading(false),
-        history.push("/menu")
-        );
+
+        const request = axios.post(
+            "http://localhost:4000/exit",
+            body,
+            config
+          );
+  
+          request.then((data)=>
+          setLoading(false),
+          history.push("/menu")
+          );
+          
+          request.catch(() => {
+            setLoading(false);
+            alert("Falha ao salvar saída!");
+        });           
 }
 
 return(

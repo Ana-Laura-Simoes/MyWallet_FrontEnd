@@ -1,33 +1,41 @@
 
 import styled from "styled-components";
-import { useEffect, useState} from "react";
+import { useEffect, useState, useContext} from "react";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import Register from "../Components/Register";
 import axios from 'axios';
+import UserContext from "../contexts/UserContext";
 
 export default function Home(){
 
 const [registers,setRegisters]=useState([]);
 //const [balance,setBalance]=useState(0);
+const {user} = useContext(UserContext);
 let balance=0;
 let exits=0;
 let entrances=0;
 
 useEffect(() => {
+        const config = {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        };
+    
         const request = axios.get(
-          "http://localhost:4000/menu"
+          "http://localhost:4000/menu",
+          config
         );
-
         request.then((response) => {
           setRegisters(response.data);
         });
     
-        request.catch(() => {
-          alert("Falha no login, email ou senha incorretos!");
-        }); 
+        request.catch((error) => {
+          console.log(error);
+        });
       
-  }, []);
+  }, [registers]);
 
  
   registers.forEach((r)=>{if(r.type==="exit") exits=exits+Number(r.value)})
