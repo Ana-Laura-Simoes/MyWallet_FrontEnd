@@ -10,9 +10,8 @@ import UserContext from "../contexts/UserContext";
 export default function Home(){
 
 const [registers,setRegisters]=useState([]);
-//const [balance,setBalance]=useState(0);
 const {user} = useContext(UserContext);
-let balance=0;
+const [balance,setBalance]=useState(0);
 let exits=0;
 let entrances=0;
 
@@ -28,20 +27,22 @@ useEffect(() => {
           config
         );
         request.then((response) => {
-          setRegisters(response.data);
+          setRegisters(response.data.bankStatement);
+          setBalance(response.data.balance);
         });
     
         request.catch((error) => {
           console.log(error);
         });
       
-  }, [registers]);
+  }, []);
 
  
-  registers.forEach((r)=>{if(r.type==="exit") exits=exits+Number(r.value)})
+  /*registers.forEach((r)=>{if(r.type==="exit") exits=exits+Number(r.value)})
   registers.forEach((r)=>{if(r.type==="entrance")entrances+=Number(r.value)})
 
   balance=(entrances-exits) ;
+  */
 
     return(
 <>
