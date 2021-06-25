@@ -31,12 +31,11 @@ function HandleData(e){
     setLoading(true);
 
     request.then((response) => {
-      console.log(response.data)
       history.push("/");
     });
 
     request.catch((error) => {
-      if(error.response.status===409) alert("Este e-mail já esta cadastrado!");
+     if(error.response.status===409) alert("Este e-mail já esta cadastrado!");
       
       else alert("Falha no login, email ou senha incorretos!");
       setLoading(false);

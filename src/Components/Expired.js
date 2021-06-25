@@ -6,7 +6,7 @@ import {useState} from "react";
 export default function Expired(){
 
     const history = useHistory();
-    //const [isOpen,setIsOpen]=useState(true);
+
     return(
 <Modal
                 isOpen={true}

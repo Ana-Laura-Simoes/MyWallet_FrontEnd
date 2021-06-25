@@ -18,7 +18,7 @@ const [registers,setRegisters]=useState([]);
 const {user} = useContext(UserContext);
 const [balance,setBalance]=useState(0);
 
-//Modal.setAppElement('#root');
+
 
 useEffect(() => {
         const config = {
@@ -38,10 +38,10 @@ useEffect(() => {
         });
     
         request.catch((error) => {
-          console.log(error);
+
 
           if(error.response.status===401){
-            console.log(error);
+
             setIsOpen(true);
             
           }

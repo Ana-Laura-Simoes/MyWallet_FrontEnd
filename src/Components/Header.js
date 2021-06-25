@@ -23,21 +23,13 @@ function logout(){
       request.then((response) => {
         localStorage.removeItem("user") 
           history.push("/")
+          console.log(response)
       });
   
       request.catch((error) => {
         alert("Falha ao sair!")
       });
 }
-       /*
-              request.then((data)=>
-
-              );
-              
-              request.catch(() => {
-                
-            });             
-*/
 
     
 

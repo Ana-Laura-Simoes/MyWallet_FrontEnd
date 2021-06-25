@@ -26,7 +26,7 @@ function HandleData(e){
     setLoading(true);
 
     request.then((response) => {
-      console.log(response.data)
+
       setUser(response.data);
       localStorage.setItem("user", JSON.stringify(response.data));
       history.push("/menu");

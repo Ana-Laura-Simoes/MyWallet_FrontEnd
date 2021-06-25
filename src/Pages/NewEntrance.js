@@ -41,7 +41,7 @@ function HandleData(e){
           request.catch((error) => {
             setLoading(false);
             if(error.response.status===401){
-              console.log(error);
+
               setIsOpen(true);
               
             }
