@@ -3,15 +3,43 @@ import UserContext from "../contexts/UserContext";
 import { useContext} from "react"
 import {useHistory } from "react-router-dom";
 import{RiLogoutBoxRLine} from 'react-icons/ri';
+import axios from 'axios';
 
 export default function Header(){
     const {user} = useContext(UserContext);
     const history = useHistory();
 
-    function logout() {
-        localStorage.clear();
-        history.push("/");
-    }
+function logout(){
+    const config = {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      }; 
+  
+      const request = axios.delete(
+        "http://localhost:4000/logOut",
+        config
+      );
+      request.then((response) => {
+        localStorage.removeItem("user") 
+          history.push("/")
+      });
+  
+      request.catch((error) => {
+        alert("Falha ao sair!")
+      });
+}
+       /*
+              request.then((data)=>
+
+              );
+              
+              request.catch(() => {
+                
+            });             
+*/
+
+    
 
     return(
 <Container>

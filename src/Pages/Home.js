@@ -1,17 +1,24 @@
 
 import styled from "styled-components";
 import { useEffect, useState, useContext} from "react";
+
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import Register from "../Components/Register";
 import axios from 'axios';
 import UserContext from "../contexts/UserContext";
+import Expired from "../Components/Expired";
+
+
 
 export default function Home(){
+const [isOpen,setIsOpen]=useState(false);
 
 const [registers,setRegisters]=useState([]);
 const {user} = useContext(UserContext);
 const [balance,setBalance]=useState(0);
+
+//Modal.setAppElement('#root');
 
 useEffect(() => {
         const config = {
@@ -27,18 +34,28 @@ useEffect(() => {
         request.then((response) => {
           setRegisters(response.data.bankStatement);
           setBalance(response.data.balance);
+          
         });
     
         request.catch((error) => {
           console.log(error);
+
+          if(error.response.status===401){
+            console.log(error);
+            setIsOpen(true);
+            
+          }
         });
       
   }, []);//eslint-disable-line
 
     return(
 <>
+{isOpen?<Expired/>:""}
 <Container>
+
 <Header/>
+
 
 <BankStatement notEmpty={registers.length}>
 {registers.length===0? <p>Não há registros de entrada ou saída</p> 
@@ -66,10 +83,15 @@ type={r.type}/>)
 </BankStatement>
 
 <Footer/>
+
 </Container>
+
+
 </>
     );
 }
+
+
 
 const Container=styled.div `
 padding:25px;

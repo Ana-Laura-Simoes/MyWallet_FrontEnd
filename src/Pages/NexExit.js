@@ -4,10 +4,12 @@ import Loader from "react-loader-spinner";
 import axios from 'axios';
 import {useHistory} from "react-router-dom";
 import UserContext from "../contexts/UserContext";
+import Expired from "../Components/Expired";
 
 
 export default function NewExit(){
 const history = useHistory();
+const [isOpen,setIsOpen]=useState(false);
 const {user} = useContext(UserContext);
 const[Value,setValue]=useState("");
 const[description,setDescription]=useState("");
@@ -37,13 +39,20 @@ function HandleData(e){
           history.push("/menu")
           );
           
-          request.catch(() => {
+          request.catch((error) => {
             setLoading(false);
-            alert("Falha ao salvar saída!");
+            if(error.response.status===401){
+              console.log(error);
+              setIsOpen(true);
+              
+            }
+            else alert("Falha ao salvar entrada!");
         });           
 }
 
 return(
+ <>
+ {isOpen?<Expired/>:""}  
 <Container>
 <span>Nova Saída</span>
 
@@ -81,6 +90,7 @@ onClick={()=> (history.push("/menu"))}>
 Cancelar
 </Cancel>
 </Container>
+</>
     );
 }
 
