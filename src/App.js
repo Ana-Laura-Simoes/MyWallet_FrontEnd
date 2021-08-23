@@ -1,5 +1,6 @@
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import Transactions from "./Pages/Menu";
+import NewTransaction from "./Pages/NewTransaction";
 import NewEntrance from "./Pages/NewEntrance";
 import NewExit from "./Pages/NexExit";
 import SignUp from "./Pages/SignUp";
@@ -21,7 +22,11 @@ export default function App() {
           <Route path="/" exact component={SignIn} />
           <Route path="/sign-up" exact component={SignUp} />
           <Route path="/menu" exact component={Transactions} />
-          <Route path="/entrance" exact component={NewEntrance} />
+          <Route
+            path="/newtransaction/:transaction"
+            exact
+            component={NewTransaction}
+          />
           <Route path="/exit" exact component={NewExit} />
         </Switch>
       </BrowserRouter>
