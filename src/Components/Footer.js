@@ -1,57 +1,73 @@
 import styled from "styled-components";
-import {AiOutlinePlusCircle,AiOutlineMinusCircle} from "react-icons/ai";
-import {useHistory} from "react-router-dom";
+import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
+import { useHistory } from "react-router-dom";
 
-export default function Footer(){
-    const history = useHistory();
-    
-    function NewEntrance() {
-        history.push("/entrance");
-    }
+export default function Footer() {
+  const history = useHistory();
 
-    function NewExit() {
-        history.push("/exit");
-    }
+  function NewEntrance() {
+    history.push("/newtransaction/entrance");
+  }
 
-    return(
-<Container>
+  function NewExit() {
+    history.push("/newtransaction/exit");
+  }
 
-<Button onClick={()=>(NewEntrance())}>
-<AiOutlinePlusCircle/>
- <span>Nova entrada</span> 
-</Button>
+  return (
+    <Container>
+      <Button onClick={() => NewEntrance()}>
+        <AiOutlinePlusCircle />
+        <span>Nova entrada</span>
+      </Button>
 
-<Button onClick={()=>(NewExit())}>
-<AiOutlineMinusCircle/>
- <span>Nova saída</span>  
-</Button>
-</Container>
-    );
+      <Button onClick={() => NewExit()}>
+        <AiOutlineMinusCircle />
+        <span>Nova saída</span>
+      </Button>
+    </Container>
+  );
 }
 
-const Container = styled.div `
-position: fixed;
-bottom:0;
-left:0;
-right:0;
-padding:20px;
-display:flex;
-align-items: center;
-justify-content: space-between;
+const Container = styled.div`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 16%;
+  padding-right: 16%;
+
+  @media (max-width: 600px) {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
 `;
 
-const Button = styled.button `
-background: #A328D6;
-border-radius: 5px;
-padding:10px;
-border:none;
-width: 155px;
-height: 114px;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-font-weight: bold;
-font-size: 17px;
-line-height: 20px;
-color: #FFFFFF;
+const Button = styled.button`
+  background: #a328d6;
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+  width: 185px;
+  height: 94px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 17px;
+  line-height: 20px;
+  color: #ffffff;
+  cursor: pointer;
+
+  @media (max-width: 600px) {
+    width: 155px;
+    height: 114px;
+  }
+
+  @media (max-width: 400px) {
+    width: 40%;
+  }
 `;

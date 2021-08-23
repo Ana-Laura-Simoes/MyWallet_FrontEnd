@@ -92,6 +92,13 @@ const Container = styled.div`
   justify-content: center;
   padding: 25px;
 
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
   input {
     width: 326px;
     height: 58px;
@@ -99,6 +106,9 @@ const Container = styled.div`
     border-radius: 5px;
     border: none;
     margin-bottom: 13px;
+    @media (max-width: 360px) {
+      width: 90vw;
+    }
   }
 
   button {
@@ -116,7 +126,11 @@ const Container = styled.div`
     font-size: 20px;
     line-height: 23px;
     color: #ffffff;
+    cursor: pointer;
     opacity: ${(props) => (props.isdisabled ? 0.2 : 1)};
+    @media (max-width: 360px) {
+      width: 90vw;
+    }
   }
 
   div {
@@ -125,5 +139,6 @@ const Container = styled.div`
     line-height: 18px;
     color: #ffffff;
     margin-top: 32px;
+    cursor: pointer;
   }
 `;

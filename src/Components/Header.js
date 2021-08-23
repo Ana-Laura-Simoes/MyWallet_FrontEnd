@@ -49,8 +49,14 @@ const Container = styled.div`
   left: 0;
   right: 0;
   padding: 25px;
+  padding-left: 16%;
+  padding-right: 16%;
 
   .icon {
     cursor: pointer;
+  }
+  @media (max-width: 600px) {
+    padding-left: 25px;
+    padding-right: 25px;
   }
 `;
