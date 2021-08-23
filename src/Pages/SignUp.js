@@ -67,6 +67,7 @@ export default function SignUp() {
 
           <input
             type="password"
+            minlength="6"
             required
             placeholder="Senha"
             value={password}
@@ -76,6 +77,7 @@ export default function SignUp() {
 
           <input
             type="password"
+            minlength="6"
             required
             placeholder="Confirme a senha"
             value={confirmPassword}

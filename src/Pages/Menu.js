@@ -8,7 +8,7 @@ import axios from "axios";
 import UserContext from "../contexts/UserContext";
 import Expired from "../Components/Expired";
 
-export default function Home() {
+export default function Transactions() {
   const [isOpen, setIsOpen] = useState(false);
 
   const [registers, setRegisters] = useState([]);

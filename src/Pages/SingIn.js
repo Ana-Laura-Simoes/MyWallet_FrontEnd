@@ -5,7 +5,7 @@ import { useHistory } from "react-router";
 import axios from "axios";
 import UserContext from "../contexts/UserContext";
 
-export default function Login() {
+export default function SignIn() {
   const { setUser } = useContext(UserContext);
 
   const history = useHistory();
@@ -49,6 +49,7 @@ export default function Login() {
 
           <input
             type="password"
+            minlength="6"
             required
             placeholder="Senha"
             value={password}
@@ -65,7 +66,7 @@ export default function Login() {
           </button>
         </form>
 
-        <div onClick={() => history.push("/SignUp")}>
+        <div onClick={() => history.push("/sign-up")}>
           {" "}
           Primeira vez? Cadastre-se!
         </div>
