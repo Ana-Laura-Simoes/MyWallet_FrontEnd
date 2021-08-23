@@ -77,6 +77,8 @@ const Container = styled.div`
   padding: 25px;
   width: 100vw;
   height: 100vh;
+  display: flex;
+  justify-content: center;
 `;
 
 const BankStatement = styled.div`
@@ -84,6 +86,7 @@ const BankStatement = styled.div`
   background: #ffffff;
   margin-top: 78px;
   border-radius: 5px;
+  width: 70%;
   height: 70%;
   padding: 12px;
   padding-top: 23px;
@@ -98,6 +101,9 @@ const BankStatement = styled.div`
     font-size: 20px;
     line-height: 23px;
     text-align: center;
+  }
+  @media (max-width: 600px) {
+    width: 100%;
   }
 `;
 
