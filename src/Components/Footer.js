@@ -37,6 +37,13 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-left: 16%;
+  padding-right: 16%;
+
+  @media (max-width: 600px) {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
 `;
 
 const Button = styled.button`
@@ -44,8 +51,8 @@ const Button = styled.button`
   border-radius: 5px;
   padding: 10px;
   border: none;
-  width: 155px;
-  height: 114px;
+  width: 185px;
+  height: 94px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -53,4 +60,14 @@ const Button = styled.button`
   font-size: 17px;
   line-height: 20px;
   color: #ffffff;
+  cursor: pointer;
+
+  @media (max-width: 600px) {
+    width: 155px;
+    height: 114px;
+  }
+
+  @media (max-width: 400px) {
+    width: 40%;
+  }
 `;
