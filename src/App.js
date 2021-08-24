@@ -1,8 +1,6 @@
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import Transactions from "./Pages/Menu";
 import NewTransaction from "./Pages/NewTransaction";
-import NewEntrance from "./Pages/NewEntrance";
-import NewExit from "./Pages/NexExit";
 import SignUp from "./Pages/SignUp";
 import SignIn from "./Pages/SingIn";
 import { useState } from "react";
@@ -27,7 +25,6 @@ export default function App() {
             exact
             component={NewTransaction}
           />
-          <Route path="/exit" exact component={NewExit} />
         </Switch>
       </BrowserRouter>
     </UserContext.Provider>
