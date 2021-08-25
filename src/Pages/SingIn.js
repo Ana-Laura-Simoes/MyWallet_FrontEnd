@@ -17,10 +17,10 @@ export default function SignIn() {
     e.preventDefault();
     const body = { email, password };
     const request = axios.post(
-      `https://my-wallet-api-deploy.herokuapp.com/sign-in/`,
+      `${process.env.REACT_APP_API_BASE_URL}/sign-in`,
       body
     );
-
+    console.log(process.env.REACT_APP_API_BASE_URL);
     setLoading(true);
 
     request.then((response) => {

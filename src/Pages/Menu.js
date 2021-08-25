@@ -36,7 +36,7 @@ export default function Transactions() {
         setIsOpen(true);
       }
     });
-  }, []); //eslint-disable-line
+  }, [registers]); //eslint-disable-line
 
   return (
     <>
