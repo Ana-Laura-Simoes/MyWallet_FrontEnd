@@ -10,6 +10,7 @@ export default function Expired() {
       <ModalContent>
         <span>Sua sessão expirou!</span>
         <button
+          // eslint-disable-next-line
           onClick={() => (localStorage.removeItem("user"), history.push("/"))}
         >
           LOGIN
