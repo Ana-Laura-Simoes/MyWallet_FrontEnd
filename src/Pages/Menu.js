@@ -10,10 +10,10 @@ import Expired from "../Components/Expired";
 
 export default function Transactions() {
   const [isOpen, setIsOpen] = useState(false);
-
   const [registers, setRegisters] = useState([]);
   const { user } = useContext(UserContext);
   const [balance, setBalance] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const config = {
@@ -21,7 +21,7 @@ export default function Transactions() {
         Authorization: `Bearer ${user.token}`,
       },
     };
-
+    setLoading(true);
     const request = axios.get(
       `${process.env.REACT_APP_API_BASE_URL}/transactions`,
       config
@@ -29,6 +29,7 @@ export default function Transactions() {
     request.then((response) => {
       setRegisters(response.data.bankStatement);
       setBalance(response.data.balance);
+      setLoading(false);
     });
 
     request.catch((error) => {
@@ -41,37 +42,41 @@ export default function Transactions() {
   return (
     <>
       {isOpen ? <Expired /> : ""}
-      <Container>
-        <Header />
+      {!loading ? (
+        <Container>
+          <Header />
 
-        <BankStatement notEmpty={registers.length}>
-          {registers.length === 0 ? (
-            <p>Não há registros de entrada ou saída</p>
-          ) : (
-            <>
-              <div>
-                {registers.map((r) => (
-                  <Register
-                    key={r.id}
-                    date={r.date || "30/11"}
-                    description={r.description}
-                    value={r.value}
-                    type={r.type}
-                  />
-                ))}
-              </div>
-              <Balance>
-                <span>SALDO</span>
-                <span className={balance >= 0 ? "positive" : "negative"}>
-                  {balance.toFixed(2)}
-                </span>
-              </Balance>
-            </>
-          )}
-        </BankStatement>
+          <BankStatement notEmpty={registers.length}>
+            {registers.length === 0 ? (
+              <p>Não há registros de entrada ou saída</p>
+            ) : (
+              <>
+                <div>
+                  {registers.map((r) => (
+                    <Register
+                      key={r.id}
+                      date={r.date || "30/11"}
+                      description={r.description}
+                      value={r.value}
+                      type={r.type}
+                    />
+                  ))}
+                </div>
+                <Balance>
+                  <span>SALDO</span>
+                  <span className={balance >= 0 ? "positive" : "negative"}>
+                    {balance.toFixed(2)}
+                  </span>
+                </Balance>
+              </>
+            )}
+          </BankStatement>
 
-        <Footer />
-      </Container>
+          <Footer />
+        </Container>
+      ) : (
+        ""
+      )}
     </>
   );
 }
