@@ -30,7 +30,7 @@ export default function NewTransaction() {
     };
 
     const request = axios.post(
-      `http://localhost:4000/${transaction}`,
+      `${process.env.REACT_APP_API_BASE_URL}/${transaction}`,
       body,
       config
     );

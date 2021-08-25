@@ -22,7 +22,10 @@ export default function Transactions() {
       },
     };
 
-    const request = axios.get("http://localhost:4000/transactions", config);
+    const request = axios.get(
+      `${process.env.REACT_APP_API_BASE_URL}/transactions`,
+      config
+    );
     request.then((response) => {
       setRegisters(response.data.bankStatement);
       setBalance(response.data.balance);

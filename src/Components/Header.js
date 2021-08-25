@@ -16,7 +16,11 @@ export default function Header() {
       },
     };
 
-    const request = axios.post("http://localhost:4000/sign-out", {}, config);
+    const request = axios.post(
+      `${process.env.REACT_APP_API_BASE_URL}/sign-out`,
+      {},
+      config
+    );
 
     request.then((response) => {
       localStorage.removeItem("user");

@@ -16,7 +16,10 @@ export default function SignIn() {
   function HandleData(e) {
     e.preventDefault();
     const body = { email, password };
-    const request = axios.post("http://localhost:4000/sign-in", body);
+    const request = axios.post(
+      `${process.env.REACT_APP_API_BASE_URL}/sign-in`,
+      body
+    );
 
     setLoading(true);
 
