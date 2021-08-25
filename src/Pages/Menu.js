@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Loader from "react-loader-spinner";
 import { useEffect, useState, useContext } from "react";
 
 import Header from "../Components/Header";
@@ -11,6 +10,7 @@ import Expired from "../Components/Expired";
 
 export default function Transactions() {
   const [isOpen, setIsOpen] = useState(false);
+
   const [registers, setRegisters] = useState([]);
   const { user } = useContext(UserContext);
   const [balance, setBalance] = useState(0);
@@ -27,7 +27,6 @@ export default function Transactions() {
       config
     );
     request.then((response) => {
-      console.log(response.data.bankStatement);
       setRegisters(response.data.bankStatement);
       setBalance(response.data.balance);
     });
@@ -42,7 +41,6 @@ export default function Transactions() {
   return (
     <>
       {isOpen ? <Expired /> : ""}
-
       <Container>
         <Header />
 
