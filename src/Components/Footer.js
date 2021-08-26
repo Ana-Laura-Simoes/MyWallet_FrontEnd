@@ -29,10 +29,7 @@ export default function Footer() {
 }
 
 const Container = styled.div`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  width: 100%;
   padding: 20px;
   display: flex;
   align-items: center;
@@ -62,12 +59,12 @@ const Button = styled.button`
   color: #ffffff;
   cursor: pointer;
 
-  @media (max-width: 600px) {
+  @media (max-width: 620px) {
     width: 155px;
     height: 114px;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 440px) {
     width: 40%;
   }
 `;
