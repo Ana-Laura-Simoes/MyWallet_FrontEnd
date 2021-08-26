@@ -23,9 +23,9 @@ export default function App() {
           <Route path="/sign-up" exact component={SignUp} />
           <Route path="/menu" exact component={Transactions} />
           <Route
-            path="/newtransaction/:transaction"
-            exact
-            component={NewTransaction}
+          path="/newtransaction/:transaction"
+          exact
+          component={NewTransaction}
           />
         </UserContext.Provider>
       </Switch>

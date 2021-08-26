@@ -106,6 +106,7 @@ export default function SignUp() {
 }
 
 const Logo = styled.div`
+  //@import url("https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap");
   font-family: "Saira Stencil One";
   font-size: 32px;
   line-height: 50px;
