@@ -6,17 +6,19 @@ import SignIn from "./Pages/SingIn";
 import { useState } from "react";
 import UserContext from "./contexts/UserContext";
 
+import "./styles/reset.css";
+
 export default function App() {
   const [user, setUser] = useState("");
   return (
-    <UserContext.Provider
-      value={{
-        user: user || JSON.parse(localStorage.getItem("user")),
-        setUser,
-      }}
-    >
-      <BrowserRouter>
-        <Switch>
+    <BrowserRouter>
+      <Switch>
+        <UserContext.Provider
+          value={{
+            user: user || JSON.parse(localStorage.getItem("user")),
+            setUser,
+          }}
+        >
           <Route path="/" exact component={SignIn} />
           <Route path="/sign-up" exact component={SignUp} />
           <Route path="/menu" exact component={Transactions} />
@@ -25,8 +27,8 @@ export default function App() {
             exact
             component={NewTransaction}
           />
-        </Switch>
-      </BrowserRouter>
-    </UserContext.Provider>
+        </UserContext.Provider>
+      </Switch>
+    </BrowserRouter>
   );
 }
