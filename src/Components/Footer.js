@@ -16,13 +16,13 @@ export default function Footer() {
   return (
     <Container>
       <Button onClick={() => NewEntrance()}>
-        <AiOutlinePlusCircle />
-        <span>Nova entrada</span>
+        <AiOutlinePlusCircle className="icon" />
+        <h1>Nova</h1> <h2>entrada</h2>
       </Button>
 
       <Button onClick={() => NewExit()}>
-        <AiOutlineMinusCircle />
-        <span>Nova saída</span>
+        <AiOutlineMinusCircle className="icon" />
+        <h1>Nova</h1> <h2>saída</h2>
       </Button>
     </Container>
   );
@@ -55,9 +55,20 @@ const Button = styled.button`
   justify-content: space-between;
   font-weight: bold;
   font-size: 17px;
-  line-height: 20px;
   color: #ffffff;
   cursor: pointer;
+
+  .icon {
+    color: white;
+    font-size: 20px;
+  }
+  h1,
+  h2 {
+    margin: 0 auto;
+    letter-spacing: 0em;
+    color: white;
+    padding-bottom: 10px;
+  }
 
   @media (max-width: 620px) {
     width: 155px;
@@ -66,5 +77,10 @@ const Button = styled.button`
 
   @media (max-width: 440px) {
     width: 40%;
+    h1,
+    h2 {
+      font-size: 15px;
+      padding-bottom: 5px;
+    }
   }
 `;
