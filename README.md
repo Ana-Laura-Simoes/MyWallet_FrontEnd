@@ -14,6 +14,12 @@ This is an web application with which lots of people can manage their own expens
 
 By using this app any user can learn how they've been using their money and always keep track of your balance.
 
+<div align="center">
+  
+![Peek 2021-10-08 01-01](https://user-images.githubusercontent.com/81721608/136496913-6ac08934-166c-4e9f-a476-c9c746a746ff.gif)
+
+</div> 
+
 ## Technologies
 
 The following tools and frameworks were used in the construction of the project:<br>
